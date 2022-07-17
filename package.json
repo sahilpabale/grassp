@@ -44,7 +44,7 @@
     "@types/blessed": "^0.1.19",
     "@types/chai": "^4",
     "@types/mocha": "^9.0.0",
-    "@types/node": "^16.9.4",
+    "@types/node": "^16.11.45",
     "@types/react": "^18.0.15",
     "chai": "^4",
     "eslint": "^7.32.0",
