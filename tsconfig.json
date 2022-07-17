@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
+    "jsx": "react",
+    "esModuleInterop": true,
     "declaration": true,
     "importHelpers": true,
+    "moduleResolution": "node",
     "module": "commonjs",
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
-    "target": "es2019"
+    "target": "ES2019",
+    "noImplicitAny": false,
+    "useUnknownInCatchVariables": false
   },
   "include": [
     "src/**/*"
