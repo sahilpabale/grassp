@@ -30,8 +30,11 @@ USAGE
 <!-- commands -->
 * [`grassp help [COMMAND]`](#grassp-help-command)
 * [`grassp login`](#grassp-login)
+* [`grassp logout`](#grassp-logout)
 * [`grassp signup`](#grassp-signup)
-* [`grassp test`](#grassp-test)
+* [`grassp update interests`](#grassp-update-interests)
+* [`grassp update profile`](#grassp-update-profile)
+* [`grassp whoami`](#grassp-whoami)
 
 ## `grassp help [COMMAND]`
 
@@ -65,10 +68,27 @@ DESCRIPTION
   login to grassp.
 
 EXAMPLES
-  $ grassp signup
+  $ grassp login
 ```
 
 _See code: [dist/commands/login.ts](https://github.com/sahilpabale/grassp/blob/v0.1.0/dist/commands/login.ts)_
+
+## `grassp logout`
+
+logout from grassp.
+
+```
+USAGE
+  $ grassp logout
+
+DESCRIPTION
+  logout from grassp.
+
+EXAMPLES
+  $ grassp logout
+```
+
+_See code: [dist/commands/logout.ts](https://github.com/sahilpabale/grassp/blob/v0.1.0/dist/commands/logout.ts)_
 
 ## `grassp signup`
 
@@ -87,19 +107,52 @@ EXAMPLES
 
 _See code: [dist/commands/signup.ts](https://github.com/sahilpabale/grassp/blob/v0.1.0/dist/commands/signup.ts)_
 
-## `grassp test`
+## `grassp update interests`
 
-Grassp is the first ever CLI based Micro Learning Tool!
+update your profile interests.
 
 ```
 USAGE
-  $ grassp test
+  $ grassp update interests
 
 DESCRIPTION
-  Grassp is the first ever CLI based Micro Learning Tool!
+  update your profile interests.
+
+EXAMPLES
+  $ grassp update interests
 ```
 
-_See code: [dist/commands/test.ts](https://github.com/sahilpabale/grassp/blob/v0.1.0/dist/commands/test.ts)_
+## `grassp update profile`
+
+update your profile details.
+
+```
+USAGE
+  $ grassp update profile
+
+DESCRIPTION
+  update your profile details.
+
+EXAMPLES
+  $ grassp update profile
+```
+
+## `grassp whoami`
+
+know who you are.
+
+```
+USAGE
+  $ grassp whoami
+
+DESCRIPTION
+  know who you are.
+
+EXAMPLES
+  $ grassp whoami
+```
+
+_See code: [dist/commands/whoami.ts](https://github.com/sahilpabale/grassp/blob/v0.1.0/dist/commands/whoami.ts)_
 <!-- commandsstop -->
 - [# grassp-cli](#-grassp-cli)
 - [Usage](#usage)
