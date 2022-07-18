@@ -9,11 +9,15 @@ import { signupUser } from "../utils/userAuth";
 export default class SignUp extends Command {
   static description = "create an account on grassp.";
 
-  static examples = ["$ grassp auth signup"];
+  static examples = ["$ grassp signup"];
 
   async run(): Promise<void> {
-    const { args, flags } = await this.parse(SignUp);
-    this.log(chalk.yellowBright("\n 👨🏻‍💻 Create an account on Grassp.\n"));
+    // const { args, flags } = await this.parse(SignUp);
+
+    if (process.env.SESSIONNAME) {
+      this.log(chalk.blue.bold("\n» Create an account on Grassp.\n"));
+    }
+    this.log(chalk.blue.bold("\n 👨🏻‍💻 Create an account on Grassp.\n"));
 
     const confirmPassword = async (input: any, answers: any) => {
       if (input === answers.password) {
@@ -86,6 +90,7 @@ export default class SignUp extends Command {
             { name: "Artificial Intelligence", value: "ai" },
           ],
           validate: validateFiveInterests,
+          loop: false,
         },
       ])
       .then(async (answers: UserSignUp) => {
@@ -102,17 +107,31 @@ export default class SignUp extends Command {
           if (!data) {
             this.error("Internal Server Error!!");
           } else {
-            this.log(chalk.green(`\n✨ Welcome to grassp, ${fullName}!\n`));
-            this.log(
-              chalk.yellow(
-                "📦 We've sent you a verification link to confirm your account."
-              )
-            );
-            this.log(
-              `🚀 After getting verified, ${chalk.bold.yellow(
-                "$ grassp login"
-              )} to start using grassp.`
-            );
+            if (process.env.SESSIONNAME) {
+              this.log(chalk.green(`\n»  Welcome to grassp, ${fullName}!\n`));
+              this.log(
+                chalk.yellow(
+                  "»  We've sent you a verification link to confirm your account."
+                )
+              );
+              this.log(
+                `»  After getting verified, ${chalk.bold.yellow(
+                  "$ grassp login"
+                )} to start using grassp.`
+              );
+            } else {
+              this.log(chalk.green(`\n🎉   Welcome to grassp, ${fullName}!\n`));
+              this.log(
+                chalk.yellow(
+                  "📦   We've sent you a verification link to confirm your account."
+                )
+              );
+              this.log(
+                `🚀   After getting verified, ${chalk.bold.yellow(
+                  "$ grassp login"
+                )} to start using grassp.`
+              );
+            }
           }
         } catch (error) {
           this.log(error);
