@@ -45,9 +45,8 @@ export default class SignUp extends Command {
         return "Server error :(";
       }
     };
-
-    inquirer
-      .prompt([
+    try {
+      const answers: UserSignUp = await inquirer.prompt([
         {
           type: "input",
           name: "fullName",
@@ -84,7 +83,7 @@ export default class SignUp extends Command {
             { name: "Frontend Dev", value: "frontend" },
             { name: "Backend Dev", value: "backend" },
             { name: "DevOps", value: "devops" },
-            { name: "Blockchain", value: "blockchain" },
+            { name: "Design", value: "design" },
             { name: "App Dev", value: "app" },
             { name: "Machine Learning", value: "ml" },
             { name: "Artificial Intelligence", value: "ai" },
@@ -92,57 +91,48 @@ export default class SignUp extends Command {
           validate: validateFiveInterests,
           loop: false,
         },
-      ])
-      .then(async (answers: UserSignUp) => {
-        try {
-          const { fullName, email, password, interests } = answers;
+      ]);
 
-          const data = await signupUser({
-            fullName,
-            email,
-            password,
-            interests,
-          });
+      const { fullName, email, password, interests } = answers;
 
-          this.log(data);
-
-          if (!data) {
-            this.error("Internal Server Error!!");
-          } else {
-            if (process.env.SESSIONNAME) {
-              this.log(chalk.green(`\n»  Welcome to grassp, ${fullName}!\n`));
-              this.log(
-                chalk.yellow(
-                  "»  We've sent you a verification link to confirm your account."
-                )
-              );
-              this.log(
-                `»  After getting verified, ${chalk.bold.yellow(
-                  "$ grassp login"
-                )} to start using grassp.`
-              );
-            } else {
-              this.log(chalk.green(`\n🎉   Welcome to grassp, ${fullName}!\n`));
-              this.log(
-                chalk.yellow(
-                  "📦   We've sent you a verification link to confirm your account."
-                )
-              );
-              this.log(
-                `🚀   After getting verified, ${chalk.bold.yellow(
-                  "$ grassp login"
-                )} to start using grassp.`
-              );
-            }
-          }
-        } catch (error) {
-          this.log("await error");
-          this.log(error);
-        }
-      })
-      .catch((error) => {
-        this.log("inquirer");
-        this.log(error);
+      const data = await signupUser({
+        fullName,
+        email,
+        password,
+        interests,
       });
+
+      if (!data) {
+        this.error("Internal Server Error!!");
+      } else {
+        if (process.env.SESSIONNAME) {
+          this.log(chalk.green(`\n»  Welcome to grassp, ${fullName}!\n`));
+          this.log(
+            chalk.yellow(
+              "»  We've sent you a verification link to confirm your account."
+            )
+          );
+          this.log(
+            `»  After getting verified, ${chalk.bold.yellow(
+              "$ grassp login"
+            )} to start using grassp.`
+          );
+        } else {
+          this.log(chalk.green(`\n🎉   Welcome to grassp, ${fullName}!\n`));
+          this.log(
+            chalk.yellow(
+              "📦   We've sent you a verification link to confirm your account."
+            )
+          );
+          this.log(
+            `🚀   After getting verified, ${chalk.bold.yellow(
+              "$ grassp login"
+            )} to start using grassp.`
+          );
+        }
+      }
+    } catch (error) {
+      this.log(error);
+    }
   }
 }
