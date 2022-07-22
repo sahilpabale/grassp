@@ -19,7 +19,7 @@ $ npm install -g grassp
 $ grassp COMMAND
 running command...
 $ grassp (--version)
-grassp/0.1.2 darwin-x64 node-v16.13.1
+grassp/0.1.3 darwin-x64 node-v16.13.1
 $ grassp --help [COMMAND]
 USAGE
   $ grassp COMMAND
@@ -71,7 +71,7 @@ EXAMPLES
   $ grassp login
 ```
 
-_See code: [dist/commands/login.ts](https://github.com/sahilpabale/grassp/blob/v0.1.2/dist/commands/login.ts)_
+_See code: [dist/commands/login.ts](https://github.com/sahilpabale/grassp/blob/v0.1.3/dist/commands/login.ts)_
 
 ## `grassp logout`
 
@@ -88,7 +88,7 @@ EXAMPLES
   $ grassp logout
 ```
 
-_See code: [dist/commands/logout.ts](https://github.com/sahilpabale/grassp/blob/v0.1.2/dist/commands/logout.ts)_
+_See code: [dist/commands/logout.ts](https://github.com/sahilpabale/grassp/blob/v0.1.3/dist/commands/logout.ts)_
 
 ## `grassp signup`
 
@@ -105,7 +105,7 @@ EXAMPLES
   $ grassp signup
 ```
 
-_See code: [dist/commands/signup.ts](https://github.com/sahilpabale/grassp/blob/v0.1.2/dist/commands/signup.ts)_
+_See code: [dist/commands/signup.ts](https://github.com/sahilpabale/grassp/blob/v0.1.3/dist/commands/signup.ts)_
 
 ## `grassp update interests`
 
@@ -152,7 +152,7 @@ EXAMPLES
   $ grassp whoami
 ```
 
-_See code: [dist/commands/whoami.ts](https://github.com/sahilpabale/grassp/blob/v0.1.2/dist/commands/whoami.ts)_
+_See code: [dist/commands/whoami.ts](https://github.com/sahilpabale/grassp/blob/v0.1.3/dist/commands/whoami.ts)_
 <!-- commandsstop -->
 - [# grassp-cli](#-grassp-cli)
 - [Usage](#usage)
