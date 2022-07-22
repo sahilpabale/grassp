@@ -29,18 +29,9 @@ export default class Login extends Command {
     this.log(chalk.blue.bold("\n 👨🏻‍💻 Login to Grassp.\n"));
 
     const checkIfEmailExists = async (input: any) => {
-      try {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)) {
-          const emailExists = await axios.get(
-            `${config.API_URL}/api/auth/exists/${input}`
-          );
-          if (!emailExists.data.data)
-            return "You don't have an account with us :(\n   Please create one and come here :D";
-          else return true;
-        } else return "Cannot parse that email :(";
-      } catch (error) {
-        return "Server error :(";
-      }
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)) {
+        return true;
+      } else return "Cannot parse that email :(";
     };
 
     inquirer
@@ -61,18 +52,29 @@ export default class Login extends Command {
       ])
       .then(async (answers) => {
         try {
-          const token = await loginUser(answers);
-          const { platform } = this.config;
-
-          if (!token) {
+          const emailExists = await axios.get(
+            `${config.API_URL}/api/auth/exists/${answers.email}`
+          );
+          if (!emailExists.data.data) {
             this.log(
               chalk.redBright(
-                "\n⛔️   You have entered an invalid email or password"
+                ">   You don't have an account with us :(\n    Please create one and come here :D"
               )
             );
           } else {
-            this.log(chalk.green("\n🎉   You're now logged in!"));
-            setToken(token.data, platform);
+            const token = await loginUser(answers);
+            const { platform } = this.config;
+
+            if (!token) {
+              this.log(
+                chalk.redBright(
+                  "\n⛔️   You have entered an invalid email or password"
+                )
+              );
+            } else {
+              this.log(chalk.green("\n🎉   You're now logged in!"));
+              setToken(token.data, platform);
+            }
           }
         } catch (error) {
           this.log(error);
