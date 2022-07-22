@@ -104,6 +104,8 @@ export default class SignUp extends Command {
             interests,
           });
 
+          this.log(data);
+
           if (!data) {
             this.error("Internal Server Error!!");
           } else {
@@ -134,9 +136,13 @@ export default class SignUp extends Command {
             }
           }
         } catch (error) {
+          this.log("await error");
           this.log(error);
         }
       })
-      .catch((error) => this.log(error));
+      .catch((error) => {
+        this.log("inquirer");
+        this.log(error);
+      });
   }
 }
