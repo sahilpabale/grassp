@@ -35,7 +35,14 @@ export default class Login extends Command {
 
     const parseEmail = async (input: any) => {
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)) {
-        return true;
+        const emailExists = await axios.get(
+          `${config.API_URL}/api/auth/exists/${input}`
+        );
+        if (!emailExists.data.data)
+          return chalk.redBright(
+            ">   You don't have an account with us :(\n    Please create one and come here :D"
+          );
+        else return true;
       } else return "Cannot parse that email :(";
     };
 
@@ -57,29 +64,18 @@ export default class Login extends Command {
       ])
       .then(async (answers) => {
         try {
-          const emailExists = await axios.get(
-            `${config.API_URL}/api/auth/exists/${answers.email}`
-          );
-          if (!emailExists.data.data) {
+          const token = await loginUser(answers);
+          const { platform } = this.config;
+
+          if (!token) {
             this.log(
               chalk.redBright(
-                ">   You don't have an account with us :(\n    Please create one and come here :D"
+                "\n⛔️   You have entered an invalid email or password"
               )
             );
           } else {
-            const token = await loginUser(answers);
-            const { platform } = this.config;
-
-            if (!token) {
-              this.log(
-                chalk.redBright(
-                  "\n⛔️   You have entered an invalid email or password"
-                )
-              );
-            } else {
-              this.log(chalk.green("\n🎉   You're now logged in!"));
-              setToken(token.data, platform);
-            }
+            this.log(chalk.green("\n🎉   You're now logged in!"));
+            setToken(token.data, platform);
           }
         } catch (error) {
           this.log(error);
