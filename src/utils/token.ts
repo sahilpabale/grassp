@@ -48,7 +48,7 @@ export const getToken = (platform: string) => {
     const token = fs.readFileSync(tokenFile, { encoding: "utf-8" });
     return token;
   } catch (error) {
-    return null;
+    throw error;
   }
 };
 

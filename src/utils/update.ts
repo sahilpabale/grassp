@@ -24,6 +24,6 @@ export const updateInterests = async (
       return response.data.data;
     } else return false;
   } catch (error) {
-    return false;
+    throw error;
   }
 };

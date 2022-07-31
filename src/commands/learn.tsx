@@ -20,14 +20,15 @@ export default class Learn extends Command {
     const token = getToken(platform);
 
     try {
-      const resp = await getUserInterests(token!);
-      if (!resp) return this.log(chalk.red(`>> Server Error!`));
+      const resp = await getUserInterests(token);
 
       const interests = resp.map((interest: { title: any; name: any }) => {
         return { name: interest.title, value: interest.name };
       });
 
-      this.log(chalk.red(figlet.textSync("Let's Learn", { font: "Larry 3D" })));
+      this.log(
+        chalk.green(figlet.textSync("Let's Learn", { font: "Larry 3D" }))
+      );
 
       const answer = await inquirer.prompt([
         {
@@ -39,10 +40,14 @@ export default class Learn extends Command {
         },
       ]);
       const { interest } = answer;
-      const modules = await getModulesByInterest(interest, token!);
+      const modules = await getModulesByInterest(interest, token);
 
       if (!modules) {
-        this.log(chalk.red(`>> No modules exist on ${interest} interest.`));
+        this.log(
+          chalk.yellow(
+            `\nSorry we don't have any module for ${interest} yet. Check again later!`
+          )
+        );
       } else {
         const selectedModule = await inquirer.prompt([
           {
@@ -61,13 +66,24 @@ export default class Learn extends Command {
 
         const moduleId = selectedModule.module;
 
-        const cards = await getCardsFromModule(moduleId, token!);
-        render(<Cards cards={cards} />);
-
-        await markModuleAsCompleted(moduleId, token!);
+        const cards = await getCardsFromModule(moduleId, token);
+        if (cards) {
+          render(<Cards cards={cards} />);
+          await markModuleAsCompleted(moduleId, token);
+        } else {
+          this.log(
+            chalk.yellow(
+              "Sorry we don't have content for this module yet! Check again later :)"
+            )
+          );
+        }
       }
     } catch (error) {
-      this.log(chalk.red(`>> Server Error! ${error.response.data.message}`));
+      if (error.response.data.data.code === "NOT_AUTH") {
+        this.log(chalk.red(`>> Server Error! Failed to authorize you.`));
+      } else {
+        this.log(chalk.red(`>> Server Error! ${error.response.data.message}`));
+      }
     }
   }
 }

@@ -1,3 +1,4 @@
 export default {
-  API_URL: "https://api.grassp.xyz",
+  // API_URL: "https://grassp-api.fly.dev",
+  API_URL: "http://localhost:8000",
 };

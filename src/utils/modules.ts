@@ -12,7 +12,7 @@ export const getModulesByInterest = async (interest: string, token: string) => {
       }
     );
 
-    return response.data.data.length === 0 ? false : response.data.data;
+    return response.data.data.length === 0 ? null : response.data.data;
   } catch (error) {
     throw error;
   }
@@ -29,7 +29,7 @@ export const getCardsFromModule = async (moduleId: string, token: string) => {
       }
     );
 
-    return response.data.data.length === 0 ? false : response.data.data;
+    return response.data.data.length === 0 ? null : response.data.data;
   } catch (error) {
     throw error;
   }

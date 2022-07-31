@@ -59,6 +59,14 @@ export default class Interests extends Command {
           }
         }
       })
-      .catch((error) => this.log(error));
+      .catch((error) => {
+        if (error.response.status == 404) {
+          this.log(
+            chalk.red(
+              "\n⛔️   Failed to update your interests due to some conflicts."
+            )
+          );
+        }
+      });
   }
 }

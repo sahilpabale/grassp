@@ -54,6 +54,6 @@ export const getUserInterests = async (token: string) => {
 
     return response.data.data;
   } catch (error) {
-    return false;
+    throw error;
   }
 };

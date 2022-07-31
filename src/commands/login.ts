@@ -14,13 +14,18 @@ export default class Login extends Command {
   async run(): Promise<void> {
     // const { args, flags } = await this.parse(Login);
     const { platform } = this.config;
+    try {
+      const user = await getUser(platform);
 
-    const user = await getUser(platform);
-
-    if (user) {
-      this.log(chalk.redBright("You're already logged in!"));
-      this.log(`\nUse ${chalk.yellow("$ grassp whoami")} to get your profile.`);
-      process.exit();
+      if (user) {
+        this.log(chalk.redBright("You're already logged in!"));
+        this.log(
+          `\nUse ${chalk.yellow("$ grassp whoami")} to get your profile.`
+        );
+        process.exit();
+      }
+    } catch (error) {
+      this.log(error);
     }
 
     if (process.env.SESSIONNAME) {
@@ -28,7 +33,7 @@ export default class Login extends Command {
     }
     this.log(chalk.blue.bold("\n 👨🏻‍💻 Login to Grassp.\n"));
 
-    const checkIfEmailExists = async (input: any) => {
+    const parseEmail = async (input: any) => {
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input)) {
         return true;
       } else return "Cannot parse that email :(";
@@ -39,7 +44,7 @@ export default class Login extends Command {
         {
           type: "input",
           name: "email",
-          validate: checkIfEmailExists,
+          validate: parseEmail,
           message: "Email Id: ",
           prefix: chalk.green("•"),
         },
