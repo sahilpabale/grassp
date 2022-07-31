@@ -19,7 +19,7 @@ $ npm install -g grassp
 $ grassp COMMAND
 running command...
 $ grassp (--version)
-grassp/0.2.4 darwin-x64 node-v16.13.1
+grassp/0.2.5 darwin-x64 node-v16.13.1
 $ grassp --help [COMMAND]
 USAGE
   $ grassp COMMAND
@@ -72,7 +72,7 @@ EXAMPLES
   $ grassp learn
 ```
 
-_See code: [dist/commands/learn.ts](https://github.com/sahilpabale/grassp/blob/v0.2.4/dist/commands/learn.ts)_
+_See code: [dist/commands/learn.ts](https://github.com/sahilpabale/grassp/blob/v0.2.5/dist/commands/learn.ts)_
 
 ## `grassp login`
 
@@ -89,7 +89,7 @@ EXAMPLES
   $ grassp login
 ```
 
-_See code: [dist/commands/login.ts](https://github.com/sahilpabale/grassp/blob/v0.2.4/dist/commands/login.ts)_
+_See code: [dist/commands/login.ts](https://github.com/sahilpabale/grassp/blob/v0.2.5/dist/commands/login.ts)_
 
 ## `grassp logout`
 
@@ -106,7 +106,7 @@ EXAMPLES
   $ grassp logout
 ```
 
-_See code: [dist/commands/logout.ts](https://github.com/sahilpabale/grassp/blob/v0.2.4/dist/commands/logout.ts)_
+_See code: [dist/commands/logout.ts](https://github.com/sahilpabale/grassp/blob/v0.2.5/dist/commands/logout.ts)_
 
 ## `grassp signup`
 
@@ -123,7 +123,7 @@ EXAMPLES
   $ grassp signup
 ```
 
-_See code: [dist/commands/signup.ts](https://github.com/sahilpabale/grassp/blob/v0.2.4/dist/commands/signup.ts)_
+_See code: [dist/commands/signup.ts](https://github.com/sahilpabale/grassp/blob/v0.2.5/dist/commands/signup.ts)_
 
 ## `grassp update interests`
 
@@ -170,7 +170,7 @@ EXAMPLES
   $ grassp whoami
 ```
 
-_See code: [dist/commands/whoami.ts](https://github.com/sahilpabale/grassp/blob/v0.2.4/dist/commands/whoami.ts)_
+_See code: [dist/commands/whoami.ts](https://github.com/sahilpabale/grassp/blob/v0.2.5/dist/commands/whoami.ts)_
 <!-- commandsstop -->
 - [# grassp-cli](#-grassp-cli)
 - [Usage](#usage)

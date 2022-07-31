@@ -1,6 +1,6 @@
 {
   "name": "grassp",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Grassp is the first ever CLI based Micro Learning Tool!",
   "author": "sahilpabale @sahilpabale",
   "bin": {
