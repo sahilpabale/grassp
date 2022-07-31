@@ -1,11 +1,11 @@
 # grassp-cli
-=================
+## Grassp is the first ever CLI based Micro Learning Tool!
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![CircleCI](https://circleci.com/gh/oclif/hello-world/tree/main.svg?style=shield)](https://circleci.com/gh/oclif/hello-world/tree/main)
-[![Downloads/week](https://img.shields.io/npm/dw/oclif-hello-world.svg)](https://npmjs.org/package/oclif-hello-world)
-[![License](https://img.shields.io/npm/l/oclif-hello-world.svg)](https://github.com/oclif/hello-world/blob/main/package.json)
+
+[![grassp](https://img.shields.io/badge/cli-grassp-green)](https://github.com/sahilpabale/grassp)
+[![Version](https://img.shields.io/npm/v/grassp.svg)](https://npmjs.org/package/grassp)
+[![Downloads/week](https://img.shields.io/npm/dw/grassp.svg)](https://npmjs.org/package/grassp)
+[![License](https://img.shields.io/npm/l/grassp.svg)](https://github.com/sahilpabale/grassp/blob/main/package.json)
 
 <!-- toc -->
 * [grassp-cli](#grassp-cli)
