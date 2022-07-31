@@ -23,7 +23,7 @@ export default class Whoami extends Command {
       const date = new Date(createdAt);
       this.log(
         chalk.green("Created At:"),
-        `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`
+        `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
       );
       this.log(chalk.green("Interests: "));
 

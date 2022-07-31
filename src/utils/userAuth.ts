@@ -43,3 +43,17 @@ export const getUser = async (platform: string) => {
     return false;
   }
 };
+
+export const getUserInterests = async (token: string) => {
+  try {
+    const response = await axios.get(`${config.API_URL}/api/interests`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response.data.data;
+  } catch (error) {
+    return false;
+  }
+};

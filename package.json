@@ -19,6 +19,7 @@
   "scripts": {
     "build": "shx rm -rf dist && tsc -b",
     "dev": "./bin/dev",
+    "runBuild": "yarn run build && ./bin/run",
     "lint": "eslint . --ext .ts --config .eslintrc",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn lint",
@@ -31,12 +32,12 @@
     "@oclif/plugin-help": "^5",
     "@oclif/plugin-not-found": "^2.3.1",
     "@oclif/plugin-warn-if-update-available": "^2.0.4",
+    "@types/figlet": "^1.5.4",
     "@types/inquirer": "^8.2.1",
     "axios": "^0.27.2",
-    "blessed": "^0.1.81",
     "chalk": "4.1.2",
+    "figlet": "^1.5.2",
     "ink": "^3.2.0",
-    "ink-use-stdout-dimensions": "^1.0.5",
     "inquirer": "^8.0.0",
     "react": "^18.2.0"
   },
@@ -68,6 +69,9 @@
       "@oclif/plugin-not-found",
       "@oclif/plugin-warn-if-update-available"
     ],
+    "hooks": {
+      "init": "./dist/hooks/pingServer"
+    },
     "topicSeparator": " ",
     "warn-if-update-available": {
       "timeoutInDays": 3,
@@ -87,7 +91,10 @@
     "grassp",
     "cli",
     "learning",
-    "oclif"
+    "oclif",
+    "ink",
+    "react",
+    "tui"
   ],
   "types": "dist/index.d.ts"
 }

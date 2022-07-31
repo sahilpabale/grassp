@@ -28,7 +28,9 @@ export default class SignUp extends Command {
     };
 
     const validateFiveInterests = async (input: string[]) => {
-      return input.length > 5 ? "Please select only 5 interests!" : true;
+      return input.length > 5 || input.length < 5
+        ? "Please select top 5 interests!"
+        : true;
     };
 
     const checkIfEmailExists = async (input: any) => {
@@ -45,6 +47,7 @@ export default class SignUp extends Command {
         return "Server error :(";
       }
     };
+
     try {
       const answers: UserSignUp = await inquirer.prompt([
         {
